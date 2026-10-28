@@ -27,7 +27,7 @@ const CONFIG = {
     whatsappMessage: "Hi, I found your portfolio and would like to connect.",
     linkedin: "https://www.linkedin.com/in/your-handle",
     github: "https://github.com/your-handle",
-    instagram: "svvadh",
+    instagram: "https://www.instagram.com/svvadh?xtok=MXEzc2c3Y2xjZXg1cg==",
     location: "malappuram,india"
   },
 
