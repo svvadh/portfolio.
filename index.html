@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Name | Full Stack Developer Portfolio</title>
+  <meta name="description" content="Portfolio of Your Name, a full stack developer building fast, accessible web applications. View projects, skills, experience and contact details.">
+  <meta name="theme-color" content="#0c0e13">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS v4 browser CDN (zero-build). Do not combine with the Tailwind CLI. -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Apply saved theme before first paint to avoid a flash -->
+  <script>
+    try { var t = localStorage.getItem("theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+  <script src="js/script.js" defer></script>
+</head>
+<body class="antialiased">
+  <a href="#home" class="skip-link">Skip to content</a>
+
+  <header class="site-header fixed top-0 inset-x-0 z-50">
+    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
+      <a href="#home" class="font-heading text-lg font-bold" data-bind="logo" aria-label="Home"></a>
+
+      <nav aria-label="Primary" class="hidden md:block">
+        <ul class="flex items-center gap-1" id="nav-desktop"></ul>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a href="#contact" class="btn btn-primary hidden md:inline-flex">Let's Connect</a>
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle light or dark theme">
+          <i data-lucide="sun" class="icon-sun"></i><i data-lucide="moon" class="icon-moon"></i>
+        </button>
+        <button id="menu-toggle" class="icon-btn md:hidden" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+    <nav id="mobile-menu" aria-label="Mobile" class="mobile-menu md:hidden" hidden>
+      <ul class="flex flex-col gap-1 p-4" id="nav-mobile"></ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="home" class="hero relative flex min-h-screen items-center pt-24 pb-16">
+      <div class="mx-auto grid w-full max-w-6xl items-center gap-12 px-5 md:grid-cols-[1.4fr_1fr]">
+        <div>
+          <p class="badge-live" id="availability" hidden><span></span>Available for new opportunities</p>
+          <p class="mt-6 text-lg muted" data-bind="greeting"></p>
+          <h1 class="mt-2 font-heading font-bold tracking-tight" style="font-size:clamp(2.4rem,6vw,4.5rem);line-height:1.05" data-bind="headline"></h1>
+          <p class="mt-4 font-heading text-xl" style="color:var(--accent)" aria-live="off"><span id="role-text"></span><span class="caret" aria-hidden="true"></span></p>
+          <p class="mt-6 max-w-xl text-base leading-relaxed muted md:text-lg" data-bind="intro"></p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#projects" class="btn btn-primary">Explore My Work</a>
+            <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+          </div>
+          <ul class="mt-8 flex gap-3" id="hero-socials" aria-label="Social links"></ul>
+        </div>
+        <div class="mx-auto w-64 md:w-full md:max-w-sm" id="avatar"></div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <div class="mx-auto grid max-w-6xl gap-12 px-5 md:grid-cols-[1fr_1.3fr]">
+        <div class="reveal">
+          <h2 class="section-title">About me</h2>
+          <ul class="mt-6 grid grid-cols-2 gap-3" id="stats"></ul>
+          <a id="resume-btn" class="btn btn-ghost mt-6" download hidden><i data-lucide="download"></i>Download résumé</a>
+        </div>
+        <div class="reveal space-y-5 leading-relaxed muted" id="about-body"></div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section">
+      <div class="mx-auto max-w-6xl px-5">
+        <h2 class="section-title reveal">Skills and technologies</h2>
+        <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" id="skills-grid"></div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section">
+      <div class="mx-auto max-w-6xl px-5">
+        <h2 class="section-title reveal">Featured projects</h2>
+        <div class="mt-6 flex flex-wrap gap-2" id="filters" role="group" aria-label="Filter projects by category"></div>
+        <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3" id="projects-grid"></div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="section">
+      <div class="mx-auto max-w-4xl px-5">
+        <h2 class="section-title reveal">Experience and education</h2>
+        <ol class="timeline mt-10" id="timeline"></ol>
+      </div>
+    </section>
+
+    <!-- Certifications (hidden when empty) -->
+    <section id="achievements" class="section" hidden>
+      <div class="mx-auto max-w-6xl px-5">
+        <h2 class="section-title reveal">Certifications and achievements</h2>
+        <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" id="certs-grid"></div>
+      </div>
+    </section>
+
+    <!-- Contact: links only, no form -->
+    <section id="contact" class="section">
+      <div class="mx-auto max-w-6xl px-5">
+        <div class="reveal max-w-2xl">
+          <h2 class="section-title">Let's Connect and Build Something Great.</h2>
+          <p class="mt-4 leading-relaxed muted">Recruiters, clients and fellow developers are all welcome. Pick whichever way suits you best and I'll get back to you.</p>
+        </div>
+        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" id="contact-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-5 py-10 md:flex-row">
+      <div class="text-center md:text-left">
+        <p class="font-heading text-lg font-bold" data-bind="name"></p>
+        <p class="mt-1 text-sm muted">&copy; <span id="year"></span> <span data-bind="name"></span>. All rights reserved.</p>
+      </div>
+      <ul class="flex flex-wrap justify-center gap-4 text-sm" id="footer-nav" aria-label="Footer"></ul>
+      <div class="flex items-center gap-3">
+        <ul class="flex gap-2" id="footer-socials" aria-label="Social links"></ul>
+        <button id="to-top" class="icon-btn" type="button" aria-label="Back to top"><i data-lucide="arrow-up"></i></button>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
